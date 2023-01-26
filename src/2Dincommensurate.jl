@@ -17,8 +17,6 @@ function hamiltonian2d(atoms::TwoLayerIn2D, model::pwIncommensurate2D)
     R2 = atoms.R2
     B1 = atoms.B1
     B2 = atoms.B2
-    v1 = atoms.v1
-    v2 = atoms.v2
     n_fftwx = model.n_fftwx
     n_fftwy = model.n_fftwy
 
@@ -27,26 +25,6 @@ function hamiltonian2d(atoms::TwoLayerIn2D, model::pwIncommensurate2D)
     EcL = model.EcL
     EcW = model.EcW
     γ = model.γ
-
-    gridsx = range(0, L - L / n_fftwx, length = n_fftwx)
-    gridsy = range(0, L - L / n_fftwy, length = n_fftwy)
-    vreal1 = zeros(Float64, length(gridsx), length(gridsy))
-    vreal2 = zeros(Float64, length(gridsx), length(gridsy))
-    for i = 1:length(gridsx)
-        for j = 1:length(gridsy)
-            #lattice1x=A[1,1]*gridsx[i]+A[1,2]*gridsy[j]
-            vreal1[i, j] = v1(gridsx[i], gridsy[j])
-        end
-    end
-    for i = 1:length(gridsx)
-        for j = 1:length(gridsy)
-            #lattice1x=A[1,1]*gridsx[i]+A[1,2]*gridsy[j]
-            vreal2[i, j] = v2(gridsx[i], gridsy[j])
-        end
-    end
-
-    vfft1 = fft(vreal1) / (n_fftwx * n_fftwy)
-    vfft2 = fft(vreal2) / (n_fftwx * n_fftwy)
 
     Gmax11 = floor(Int, max(EcL, EcW) / norm(B1[:, 1]))
     Gmax12 = floor(Int, max(EcL, EcW) / norm(B1[:, 2]))
@@ -87,9 +65,7 @@ function hamiltonian2d(atoms::TwoLayerIn2D, model::pwIncommensurate2D)
     G = reshape(G, 4, Int(length(G) / 4))'
     Gmn = reshape(Gmn, 4, Int(length(Gmn) / 4))'
 
-
     println(" EcutL = ", EcL, "; EcutW = ", EcW, "; DOF = ", npw)
-
 
     val = Complex{Float64}[]
     indi = Int64[]

@@ -4,13 +4,9 @@ using LinearAlgebra
 using Arpack
 using FFTW
 
-function hamiltonian(atoms::BiLayer1D, model::pwIncommensurate1D_LW)
+function hamiltonian(atoms::BiLayer1D, model::pwIncommensurate1D)
     L1 = atoms.L1
     L2 = atoms.L2
-    X1 = atoms.X1
-    X2 = atoms.X2
-    v1 = atoms.v1
-    v2 = atoms.v2
     EcL = model.EcL
     EcW = model.EcW
     kpts = model.kpts
@@ -19,24 +15,6 @@ function hamiltonian(atoms::BiLayer1D, model::pwIncommensurate1D_LW)
     m_max1 = floor(Int, max(EcL, EcW) * L1 / (2.0 * pi))
     m_max2 = floor(Int, max(EcL, EcW) * L2 / (2.0 * pi))
 
-    # calculate the potential and perform fftw
-    n_fftw = model.n_fftw
-    grids1 = range(0, L1 - L1 / n_fftw, length = n_fftw)
-    vreal1 = zeros(Float64, length(grids1))
-    for j = 1:length(X1)
-        for i = 1:n_fftw
-            vreal1[i] += v1(grids1[i] - X1[j])
-        end
-    end
-    vfft1 = fft(vreal1) / n_fftw
-    grids2 = range(0, L2 - L2 / n_fftw, length = n_fftw)
-    vreal2 = zeros(Float64, length(grids2))
-    for j = 1:length(X2)
-        for i = 1:n_fftw
-            vreal2[i] += v2(grids2[i] - X2[j])
-        end
-    end
-    vfft2 = fft(vreal2) / n_fftw
     # count the degrees of freedom and label the basis functions
     npw = 0
     G = Int[]

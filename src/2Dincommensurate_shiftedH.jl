@@ -10,35 +10,11 @@ function hamiltonian2d(atoms::TwoLayerIn2D, model::pwIncommensurate2D)
     R2 = atoms.R2
     B1 = atoms.B1
     B2 = atoms.B2
-    v1 = atoms.v1
-    v2 = atoms.v2
-    n_fftwx = model.n_fftwx
-    n_fftwy = model.n_fftwy
 
     kpts = model.kpts
     EcL = model.EcL
     EcW = model.EcW
     γ=model.γ
-
-   gridsx=range(0, L-L/n_fftwx, length = n_fftwx)
-   gridsy=range(0, L-L/n_fftwy, length = n_fftwy)
-   vreal1=zeros(Float64,length(gridsx),length(gridsy))
-   vreal2=zeros(Float64,length(gridsx),length(gridsy))
-  for i=1:length(gridsx)
-      for j=1:length(gridsy)
-      #lattice1x=A[1,1]*gridsx[i]+A[1,2]*gridsy[j]
-      vreal1[i,j]=v1(gridsx[i],gridsy[j])
-     end
-  end
- for i=1:length(gridsx)
-  for j=1:length(gridsy)
-   #lattice1x=A[1,1]*gridsx[i]+A[1,2]*gridsy[j]
-   vreal2[i,j]=v2(gridsx[i],gridsy[j])
-  end
-end
-
-vfft1=fft(vreal1)/(n_fftwx*n_fftwy)
-vfft2=fft(vreal2)/(n_fftwx*n_fftwy)
 
     Gmax11 = floor( Int, max(EcL,EcW) / norm(B1[:,1]) )
     Gmax12 = floor( Int, max(EcL,EcW) / norm(B1[:,2]) )
@@ -77,7 +53,7 @@ vfft2=fft(vreal2)/(n_fftwx*n_fftwy)
     nk = size(kpts,2)
     H = zeros(Complex{Float64}, nk, npw, npw)
     R = zeros(Float64,2,npw)
- #diffG=zeros(Int64,1,npw*npw)
+    #diffG=zeros(Int64,1,npw*npw)
  for k = 1 : nk
      println("assembling H[k] with kpt = ", kpts[:,k])
 

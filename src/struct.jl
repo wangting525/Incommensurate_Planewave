@@ -8,41 +8,23 @@
 struct BiLayer1D
     L1::Float64
     L2::Float64
-    X1::Array{Float64, 1}
+    X1::Array{Float64, 1}   # atom positions
     X2::Array{Float64, 1}
     z::Float64
-    v1::Function
-    v2::Function
 end
-BiLayer1D(; L1, L2, X1, X2, z, v1, v2) = BiLayer1D(L1, L2, X1, X2, z, v1, v2)
-
+BiLayer1D(; L1, L2, X1, X2, z) = BiLayer1D(L1, L2, X1, X2, z)
 
 
 """`pwIncommensurate1D`: plane wave method for 1d bilayer incommensurate systems
-    Ecut: energy cutoff
+    EcL: energy cutoff along L direction
+    EcW: energy cutoff along W direction
     kpts: k-points in BZ
     n_fftw: number of grid points for FFT
     n_eigs: number of eigenpairs to calculate
     γ:  e^{-γ|G_1m|^2} are the coefficients of basic function = e^{i(G_1m)x} for different potentials
 """
 
-
 struct pwIncommensurate1D
-    Ecut::Float64
-    kpts::Array{Float64,1}
-    n_fftw::Int
-    n_eigs::Int
-    γ::Float64
-end
-pwIncommensurate1D(; Ecut, kpts, n_fftw, n_eigs, γ) =
-            pwIncommensurate1D(Ecut, kpts, n_fftw, n_eigs, γ)
-
-
-"""`pwIncommensurate1D_LW`:
-    The cutoff domain is D_LW
-"""
-
-struct pwIncommensurate1D_LW
     EcL::Float64
     EcW::Float64
     kpts::Array{Float64,1}    # K points 
@@ -50,8 +32,8 @@ struct pwIncommensurate1D_LW
     n_eigs::Int
     γ::Float64
 end
-pwIncommensurate1D_LW(; EcL, EcW, kpts, n_fftw, n_eigs, γ) =
-            pwIncommensurate1D_LW(EcL, EcW, kpts, n_fftw, n_eigs, γ)
+pwIncommensurate1D(; EcL, EcW, kpts, n_fftw, n_eigs, γ) =
+            pwIncommensurate1D(EcL, EcW, kpts, n_fftw, n_eigs, γ)
 
 
 """`TwoLayerIn2D`: structure and specie of two incommensurate layers.
@@ -66,14 +48,11 @@ struct TwoLayerIn2D
     R2::Array{Float64,2}    # periodicity of sheet2
     B1::Array{Float64,2}
     B2::Array{Float64,2}
-    v1::Function
-    v2::Function
     θ::Float64
     X1::Array{Float64, 1}
     X2::Array{Float64, 1}
 end
-TwoLayerIn2D(; R1, R2, B1, B2, v1, v2,θ, X1, X2) = TwoLayerIn2D(R1, R2, B1, B2, v1, v2,θ, X1, X2)
-
+TwoLayerIn2D(; R1, R2, B1, B2, θ, X1, X2) = TwoLayerIn2D(R1, R2, B1, B2, θ, X1, X2)
 
 function reciprocal(R1,R2)
     # first compute the reciprocal vectors B1 and B2
@@ -83,7 +62,6 @@ function reciprocal(R1,R2)
     B2 = C2 * [ R2[2,2]  -R2[2,1] ; -R2[1,2]  R2[1,1] ]
     return B1,B2
 end
-
 
 struct pwIncommensurate2D
     EcL::Float64
