@@ -14,13 +14,8 @@ A1=[1 0; 0 1]
 R1 =L*A1     #   sheet 1
 A2=[cos(θ) cos(θ+π/2); sin(θ) sin(θ+π/2)] 
 R2 =L*A2   # sheet 2 is rotated by θ=π/10
-v(x,y)=s*((cos((π/L)*x))^2)*((cos((π/L)*y))^2)
-v1(x,y)=v((A1*[x;y])[1],(A1*[x;y])[2])
-v2(x,y)=v((A2*[x;y])[1],(A2*[x;y])[2])
-#v1(x,y)=s1*(cos(π*(A1*[x;y])[1]))^2*(cos(π*(A1*[x;y])[2]))^2  
-#v2(x,y)=s2*(cos(π*(A2*[x;y])[1]))^2*(cos(π*(A2*[x;y])[2]))^2 
 B1,B2=reciprocal(R1,R2)
-atoms= TwoLayerIn2D(R1=R1, R2=R2,B1=B1,B2=B2,v1=v1, v2=v2,θ=θ, X1=X1, X2=X2)
+atoms= TwoLayerIn2D(R1=R1, R2=R2,B1=B1,B2=B2,θ=θ, X1=X1, X2=X2)
 
 # area of the reciprocal unit cell
 RS1 = sqrt( norm(B1[:,1])^2 * norm(B1[:,2])^2 - dot(B1[:,1], B1[:,2])^2 ) 
