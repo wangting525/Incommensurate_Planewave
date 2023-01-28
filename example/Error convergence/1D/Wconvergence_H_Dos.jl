@@ -65,8 +65,6 @@ for i=1:length(D)
 	d_fermi_beta1mu10_gamma0001_exact[i]=g(D[i])
 end
 dos_fermi_beta1mu10_gamma0001_exact=(gamma1*gamma2/EcL)*sum(d_fermi_beta1mu10_gamma0001_exact)
-# Error for gamma = 0.001
-Werror
 
 
 """γ = 0.01"""
