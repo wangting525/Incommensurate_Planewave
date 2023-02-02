@@ -20,7 +20,7 @@ EcW =10.0
 nk = 20
 neigs=10
 nf= 2 * floor( Int, 2*EcL *L1/π )  
-γ=0.01  
+γ = 0.01  
 h = 2*EcW/(nk-1)
 kpoint = range(-EcW, EcW, length=nk)
 kpts = [kpoint[i] for i=1:length(kpoint)]

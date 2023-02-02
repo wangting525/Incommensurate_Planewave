@@ -36,7 +36,6 @@ g(x)=g_fermi_beta1mu10(x)
 
 # hamiltonian
 H ,G ,R=hamiltonian(atoms, model);
-λ = zeros(Float64, size(H,1));
 D, Ψ = eigen(Array(H));
 
 # DoS for test function with β=1,μ=10 
