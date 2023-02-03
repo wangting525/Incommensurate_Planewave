@@ -35,7 +35,7 @@ D, Ψ = eigen(Array(H));
 h = 0.05 # meshsize for the density of states
 x, y = dos(λ, σ, h)
 # plot the first 100 points
-plot(x[1:100], y[1:100], label = "EcL = 1000, EcW = 50", ylabel="DoS", lw = 3)
+plot(x[1:100], y[1:100]./EcL, label = "EcL = 1000, EcW = 50", ylabel="DoS", lw = 3)
 
 
 # Plot Dos convergence with respect to L
@@ -54,7 +54,7 @@ for i = 1 : length(vecEcL)
 	h = 0.05 # meshsize for the density of states
     x, y = dos(λ, σ, h)
     push!(X_L, x[1:100])
-	push!(DoS_L, y[1:100])
+	push!(DoS_L, y[1:100]./EcL)
 end
 plot(X_L, DoS_L, label = ["EcL = 500, EcW = 50" "EcL = 600, EcW = 50" "EcL = 800, EcW = 50" "EcL = 1000, EcW = 50"], ylabel="DoS", lw = 3)
 
@@ -75,7 +75,7 @@ for i = 1 : length(vecEcW)
 	h = 0.05 # meshsize for the density of states
     x, y = dos(λ, σ, h)
     push!(X_W, x[1:100])
-	push!(DoS_W, y[1:100])
+	push!(DoS_W, y[1:100]./EcL)
 end
 plot(X_W, DoS_W, label = ["EcL = 1000, EcW = 5" "EcL = 1000, EcW = 10" "EcL = 1000, EcW = 50"], ylabel="DoS", lw = 3)
 
