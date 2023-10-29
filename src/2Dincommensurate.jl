@@ -115,5 +115,6 @@ function hamiltonian2d(atoms::TwoLayerIn2D, model::pwIncommensurate2D)
     end
     H = sparse(indi, indj, val)
 
-    return H, G, Gmn, R, Gmax11, Gmax12, Gmax21, Gmax22, S1, S2, RS1, RS2
+    return H, G, Gmn, R
+    #Gmax11, Gmax12, Gmax21, Gmax22, S1, S2, RS1, RS2
 end
