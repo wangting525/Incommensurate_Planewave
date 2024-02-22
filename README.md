@@ -9,8 +9,8 @@ Including:
 - Eigenpair Computation.
 - DoS and LDoS Computation.
 
-For an in-depth understanding of the algorithms employed, please refer to the article [insert article reference here].
-
+For an in-depth understanding of the algorithms employed, please refer to the article [Convergence of the planewave
+approximations for quantum incommensurate systems. arXiv:2204.00994, 2022.].
 
 ## Quick Start 
 
