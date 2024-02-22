@@ -1,5 +1,4 @@
 # Incommensurate_Planewave.jl 
-***
 
 `Incommensurate_Planewave.jl` is a Julia package designed for the computation of the density of states (DoS) and local density of states (LDoS) for 1D and 2D incommensurate systems. 
 
@@ -13,6 +12,6 @@ Including:
 For an in-depth understanding of the algorithms employed, please refer to the article [insert article reference here].
 
 
-Quick Start 
-***
+## Quick Start 
+
 Here is an example of how to perform basic calculations using `Incommensurate_Planewave.jl`:
