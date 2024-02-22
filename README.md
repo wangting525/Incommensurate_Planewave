@@ -4,7 +4,7 @@
 
 Including:
 
-- Plane wave method.
+- Plane Wave Approximations.
 - Hamiltonian Construction.
 - Eigenpair Computation.
 - DoS and LDoS Computation.
@@ -12,8 +12,8 @@ Including:
 For an in-depth understanding of the algorithms employed, please refer to the article [Convergence of the planewave
 approximations for quantum incommensurate systems. arXiv:2204.00994, 2022.].
 
-Quick Strart 
-***
+## Quick Start 
+
 Here is an example of how to perform basic calculations using `Incommensurate_Planewave.jl`:
 ```julia
 
