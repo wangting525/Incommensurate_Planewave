@@ -9,8 +9,10 @@ Including:
 - Eigenpair Computation.
 - DoS and LDoS Computation.
 
-For an in-depth understanding of the algorithms employed, please refer to the article [Convergence of the planewave
-approximations for quantum incommensurate systems. arXiv:2204.00994, 2022.].
+Please refer to the following article for more details.
+
+T. Wang, H. Chen, A. Zhou, Y. Zhou and D. Massatt, <a href="https://arxiv.org/abs/2204.00994" style="color: blue;">Convergence of the planewave
+approximations for quantum incommensurate systems</a>, arXiv:2204.00994, 2022.
 
 ## Quick Start 
 
@@ -64,7 +66,7 @@ H, G, Gmn, R, Gmax11,Gmax12,Gmax21,Gmax22=hamiltonian2d(atoms, model)
 D, Ψ = eigen(Array(H));
 ```
 
-Compute the plot the density of states.
+Compute and plot the density of states.
 ```julia
 λ = real.(D)
 σ = 0.1   # width for smearing
@@ -73,3 +75,4 @@ x, y = dos(λ, σ, h)
 # plot the first 100 points
 plot(x[1:100], y[1:100]./EcL^2, label = "EcL = 100, EcW = 5", ylabel="DoS", lw = 3)
 ```
+<img src="https://github.com/wangting525/Incommensurate_Planewave/blob/master/figures/1Ddos.png" width="500" alt="Incommensurate system">
