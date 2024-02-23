@@ -26,7 +26,10 @@ include("../../src/dos.jl")
 ```
 
 2D incommensurate systems that are obtained by two periodic lattices together, in which one layer is rotated by an angle $\theta$ for the other.
-![Incommensurate system](https://github.com/wangting525/Incommensurate_Planewave/blob/master/figures/atomstructure.png)
+<p align="center">
+<img src="https://github.com/wangting525/Incommensurate_Planewave/blob/master/figures/atomstructure.png" width="300" alt="Incommensurate system">
+</p>
+
 
 ```julia
 # set atom parameters 2d
