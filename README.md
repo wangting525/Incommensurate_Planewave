@@ -25,8 +25,8 @@ include("../../src/2Dincommensurate.jl")
 include("../../src/dos.jl")
 ```
 
-2D incommensurate systems that are obtained by two periodic lattices together, in which one layer is rotated by an angle $\theta = \pi/10$ for the other.
-
+2D incommensurate systems that are obtained by two periodic lattices together, in which one layer is rotated by an angle $\theta$ for the other.
+![Incommensurate system](figures/atomstructure.png)
 ```julia
 # set atom parameters 2d
 X1 = [0.0;0.0]
