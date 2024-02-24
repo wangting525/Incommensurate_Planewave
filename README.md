@@ -62,7 +62,7 @@ model = pwIncommensurate2D(EcL=EcL, EcW=EcW, kpts=kpts, n_fftwx=nfx, n_fftwy=nfy
 
 Generate Hamiltonian matrix and solve eigenpairs. 
 ```julia
-H, G, Gmn, R, Gmax11,Gmax12,Gmax21,Gmax22=hamiltonian2d(atoms, model)
+H = hamiltonian2d(atoms, model)
 D, Ψ = eigen(Array(H));
 ```
 
