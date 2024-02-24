@@ -16,7 +16,7 @@ approximations for quantum incommensurate systems</a>, arXiv:2204.00994, 2022.
 
 ## Quick Start 
 
-Here is an example of how to perform basic calculations using `Incommensurate_Planewave.jl`:
+Example of basic calculations  using `Incommensurate_Planewave.jl`:
 ```julia
 
 using Plots
