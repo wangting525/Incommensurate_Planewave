@@ -9,7 +9,7 @@ Including:
 - Eigenpair Computation.
 - DoS and LDoS Computation.
 
-Please refer to the following article for more details.
+For detailed numerical schemes, refer to the article below:
 
 T. Wang, H. Chen, A. Zhou, Y. Zhou and D. Massatt, <a href="https://arxiv.org/abs/2204.00994" style="color: blue;">Convergence of the planewave
 approximations for quantum incommensurate systems</a>, arXiv:2204.00994, 2022.
